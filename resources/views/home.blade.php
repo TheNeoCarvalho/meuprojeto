@@ -14,12 +14,7 @@
                         <td>{{ $usuario->name }}</td>
                         <td>{{ $usuario->email}}</td>
                         <td class="actions">
-                            <a class="btn" href="/clientes/{{$usuario->id}}">Ver</a> <a class="btn" href="/clientes/{{ $usuario->id}}/edit">Editar</a>
-                            <form action="/clientes/{{ $usuario->id}}/delete" method="post">
-                                @csrf
-                                @method("DELETE")
-                                <button class="btn" type="submit">Excluir</a></td>
-                            </form>
+                            Ver | Editar | Editar
                     </tr>
                 @endforeach
             </tbody>

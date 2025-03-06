@@ -26,33 +26,7 @@ Route::get('/', function(){
     return view('home', ['usuarios' => $usuarios]);
 });
 
-Route::get('clientes/{id}', function(String $id){
-    $usuario = User::where('id', $id)->get();
+Route::get('clientes', function(String $id){
+    $usuario = User::where('id', 50)->get();
     return view('clientes', [ 'usuario' => $usuario] );
 });
-
-Route::get('clientes/{id}/edit', function(String $id){
-    $usuario = User::where('id', $id)->get();
-    return view('edit', [ 'usuario' => $usuario] );
-});
-
-Route::put('clientes/{id}/edit', function(String $id, Request $request){
-    
-    $validated = $request->validate([
-        'name' => 'required|max:155',
-        'email' => 'required|email',
-    ]);
-
-    $user = User::find($id);
-    $user->name = $request->name;
-    $user->email = $request->email;
-    $user->save();
-    return redirect('/');
-})->name('edit');
-
-Route::delete('clientes/{id}/delete', function(String $id){
-    
-    $user = User::find($id);
-    $user->delete();
-    return redirect('/');
-})->name('delete');
